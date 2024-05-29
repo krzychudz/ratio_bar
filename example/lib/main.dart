@@ -58,6 +58,9 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.bold,
                     color: Colors.purple,
                   ),
+                  borderStyle: RatioBarBorderStyle(
+                    borderRadiusGeometry: BorderRadius.circular(12),
+                  ),
                 ),
               ),
               const SizedBox(height: 32),
