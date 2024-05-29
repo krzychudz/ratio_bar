@@ -1,7 +1,8 @@
 name: ratio_bar
 description: "A simple and customizable Flutter widget for displaying a ratio bar, which visually represents the proportion between two values."
 version: 1.0.0
-homepage:
+repository: https://github.com/krzychudz/ratio_bar
+issue_tracker: https://github.com/krzychudz/ratio_bar/issues
 
 environment:
   sdk: '>=2.19.4 <4.0.0'
