@@ -2,7 +2,7 @@
 
 A simple and customizable Flutter widget for displaying a ratio bar, which visually represents the proportion between two values.
 
-<img src="assets/preview.jpg" width="200">
+<img src="https://raw.githubusercontent.com/krzychudz/ratio_bar/main/assets/preview.jpg" width="200">
 
 ## Features
 
