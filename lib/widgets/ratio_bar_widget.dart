@@ -7,12 +7,24 @@ class RatioBarStyle {
     this.rightSideColor,
     this.leftSideLabelTextStyle,
     this.rightSideLabelTextStyle,
+    this.borderStyle,
   });
 
   final Color? rightSideColor;
   final Color? leftSideColor;
   final TextStyle? leftSideLabelTextStyle;
   final TextStyle? rightSideLabelTextStyle;
+  final RatioBarBorderStyle? borderStyle;
+}
+
+class RatioBarBorderStyle {
+  RatioBarBorderStyle({
+    this.borderRadiusGeometry,
+    this.border,
+  });
+
+  final BorderRadiusGeometry? borderRadiusGeometry;
+  final BoxBorder? border;
 }
 
 class RatioBar extends StatelessWidget {
@@ -33,6 +45,8 @@ class RatioBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final leftSideColor = style?.leftSideColor ?? Colors.red;
     final rightSideColor = style?.rightSideColor ?? Colors.blue;
+    final borderRadius =
+        style?.borderStyle?.borderRadiusGeometry ?? BorderRadius.circular(12);
 
     return Column(
       children: [
@@ -40,7 +54,8 @@ class RatioBar extends StatelessWidget {
           width: double.infinity,
           height: 35,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: borderRadius,
+            border: style?.borderStyle?.border,
             color: ratio == null ? Colors.grey : null,
             gradient: ratio != null
                 ? LinearGradient(
