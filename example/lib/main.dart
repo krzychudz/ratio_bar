@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'RatioBar example',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -20,32 +20,69 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  double sldierValue = 0.2;
+
+  @override
   Widget build(BuildContext context) {
+    int percentageValue = (sldierValue * 100).round();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashbaord'),
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: RatioBar(
-            ratio: 1 / 5,
-            leftSideLabel: 'left',
-            rightSideLabel: 'right',
-            style: RatioBarStyle(
-              rightSideColor: Colors.green,
-              leftSideLabelTextStyle: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.w400,
-                color: Colors.green,
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 64),
+              RatioBar(
+                ratio: sldierValue,
+                leftSideLabel: 'Left value: $percentageValue%',
+                rightSideLabel: 'Right value: ${100 - percentageValue}%',
+                style: RatioBarStyle(
+                  leftSideColor: Colors.green,
+                  rightSideColor: Colors.red,
+                  leftSideLabelTextStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  rightSideLabelTextStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.purple,
+                  ),
+                ),
               ),
-            ),
-            // leftSideColor: Colors.red,
-            // rightSideColor: Colors.blue,
+              const SizedBox(height: 32),
+              const Text("Control the bar using the slider below"),
+              Column(
+                children: [
+                  Slider(
+                    label: '$percentageValue%',
+                    value: sldierValue,
+                    onChanged: (value) => setState(
+                      () {
+                        sldierValue = value;
+                      },
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Left value: $percentageValue%'),
+                      Text('Right value: ${100 - percentageValue}%'),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
