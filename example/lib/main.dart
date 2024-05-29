@@ -29,13 +29,23 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Dashbaord'),
       ),
-      body: const Center(
+      body: Center(
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: RatioBar(
-            ratio: 1 / 4,
-            leftSideColor: Colors.red,
-            rightSideColor: Colors.blue,
+            ratio: 1 / 5,
+            leftSideLabel: 'left',
+            rightSideLabel: 'right',
+            style: RatioBarStyle(
+              rightSideColor: Colors.green,
+              leftSideLabelTextStyle: TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.w400,
+                color: Colors.green,
+              ),
+            ),
+            // leftSideColor: Colors.red,
+            // rightSideColor: Colors.blue,
           ),
         ),
       ),
